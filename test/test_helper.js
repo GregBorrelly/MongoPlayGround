@@ -9,7 +9,7 @@ before((done) => {
 })
 beforeEach((done) => {
     mongoose.connection.collections.users.drop(() => {
-        //Callback call after collection is dropped
+        //Callback called after collection is dropped
         done()
     })
 })
