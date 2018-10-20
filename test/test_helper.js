@@ -8,8 +8,13 @@ before((done) => {
     .on('error', (error) => console.log('Error', error))
 })
 beforeEach((done) => {
-    mongoose.connection.collections.users.drop(() => {
-        //Callback called after collection is dropped
-        done()
+    const { users, comments, blogposts } = mongoose.connection.collections
+    
+    users.drop(() => {
+        comments.drop(()=>{
+            blogposts.drop(()=>{
+                done()
+            })
+        })
     })
 })
